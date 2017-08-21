@@ -1,6 +1,5 @@
 <?php
 
-//
 
 $x= dirname(__FILE__) . '//moxaConf.inc.php';
 
