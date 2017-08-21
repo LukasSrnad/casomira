@@ -8,7 +8,7 @@ define('MOXA_PORT_COMMAND', 966);
 define("PACKET_START",sprintf("%c%c%c",0x1,0x13, 0x54));
 define("PACKET_END",sprintf("%c",0x4));
 define("PACKET_LENGTH",37);
-define("PACKET_BUF_LENGTH",PACKET_LENGTH*2);
+define("PACKET_BUF_LENGTH",2);
 
 
 
@@ -87,10 +87,16 @@ $MOXA_STADIUMS = array(
         'portCommand' => MOXA_PORT_COMMAND,
         'comPort' => 'com17',
         'comProtocol' => 'RS485',
-        'comSpeed' => '9600',
+        'comSpeed' => 9600,
+        'packetLength' => 37,
+        'packetLengthNoData' => 37,
+        'packetStart' => sprintf("%c%c%c",0x1,0x13, 0x54),
+        'packetEnd' => sprintf("%c",0x4),
+        'packetNoData' => '',
         'timeProtocolVendor' => 'NISA',
         'timeProtocolType' => "001"
     ),
+
 
     'olomouc' => array(
         'name' => 'olomouc',
@@ -140,8 +146,15 @@ $MOXA_STADIUMS = array(
         'comPort' => 'com21',
         'comProtocol' => 'RS485',
         'comSpeed' => '9600',
+        'comSpeed' => 9600,
+        'packetLength' => 37,
+        'packetLengthNoData' => 2,
+        'packetStart' => sprintf("%c%c%c",0x1,0x13, 0x54),
+        'packetEnd' => sprintf("%c",0x4),
+        'packetNoData' => sprintf("%c%c",0xFF,0x52),
         'timeProtocolVendor' => 'NISA',
         'timeProtocolType' => "001"
+
     ),
 
     'vitkovice' => array(

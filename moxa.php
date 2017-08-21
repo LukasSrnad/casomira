@@ -83,7 +83,6 @@ class  c_timeKeeping
 
     function __construct($nstadium)
     {
-
         $this->stadium = $nstadium;
 
         $this->timeActual = new c_timeTable();
@@ -93,11 +92,9 @@ class  c_timeKeeping
 
             
         }
-
-
     }
 
-    function setData($packet)
+    function setData($npacket,$npacketStatus)
     {
 
         if ($this->timeActual->seq != 0) {
@@ -109,7 +106,7 @@ class  c_timeKeeping
 
         }
 
-        $this->timeActual->setData($packet, $this->timeLast->seq);
+        $this->timeActual->setData($npacket, $this->timeLast->seq, $npacketStatus);
 
 
     }
@@ -157,7 +154,7 @@ class  c_timeKeeping
 
                 if ($packet[PACKET_LENGTH - 1] == PACKET_END) {
 
-                    $this->setData($packet);
+                    $this->setData($packet, PACKET_STATUS_OK);
                     $buf = substr($buf, $posStart + PACKET_LENGTH);
 
 
