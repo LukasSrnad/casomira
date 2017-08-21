@@ -1,8 +1,6 @@
 <?php
 
 
-$x= dirname(__FILE__) . '//moxaConf.inc.php';
-
 require_once realpath(dirname(__FILE__) . '//moxaConf.inc.php');
 
 error_reporting(E_ALL);
@@ -210,11 +208,15 @@ class  c_timeKeeping
 }
 
 
+if ($argc >1) {
 
-$c = new c_timeKeeping(ST);
+    $c = new c_timeKeeping($argv[1]);
 
-$c->initMoxaSocket();
-$c->getMoxaData();
+
+    $c->initMoxaSocket();
+    $c->getMoxaData();
+
+}
 
 
 exit;
