@@ -1,6 +1,6 @@
 <?php
 
-// xxxxxx
+//
 
 require_once dirname(__FILE__) . '/moxaConf.inc.php';
 
