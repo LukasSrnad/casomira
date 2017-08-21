@@ -1,7 +1,7 @@
 <?php
 
 
-require_once dirname(__FILE__) . './moxaConf.inc.php';
+require_once dirname(__FILE__) . '/moxaConf.inc.php';
 
 error_reporting(E_ALL);
 set_time_limit(0);
