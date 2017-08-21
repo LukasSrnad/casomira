@@ -2,9 +2,9 @@
 
 //
 
-$x= dirname(__FILE__) . '\moxaConf.inc.php';
+$x= dirname(__FILE__) . '//moxaConf.inc.php';
 
-require_once realpath(dirname(__FILE__) . '\\moxaConf.inc.php');
+require_once realpath(dirname(__FILE__) . '//moxaConf.inc.php');
 
 error_reporting(E_ALL);
 set_time_limit(0);
