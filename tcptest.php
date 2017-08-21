@@ -66,7 +66,8 @@ class c_timeTable
         $this->gameTime->setTime(0,$min,$sec);
 
 
-//       echo $this->packet;
+
+////       echo $this->packet;
 
     }
 
