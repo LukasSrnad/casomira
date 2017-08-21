@@ -180,12 +180,13 @@ class  c_timeKeeping
         $count = 0;
         $readNext = true;
 
-
         while (1) {
 
-            if ($readNext || $buf_size == 0) {
-                $buf = $buf . socket_read($this->socket, $this->stadium['packetLength'] * PACKET_BUF_LENGTH, PHP_BINARY_READ);
-                $buf_size = strlen($buf);
+            if ($readNext || ($buf_size == 0 && $buf_size >= $this->stadium['packetLength'] * PACKET_BUF_LENGTH)) {
+
+               $buf = $buf . socket_read($this->socket, $this->stadium['packetLength'] * PACKET_BUF_LENGTH, PHP_BINARY_READ);
+               $buf_size = strlen($buf);
+
             }
 
             echo "Precteno: " . $buf_size . "\n";
@@ -198,15 +199,17 @@ class  c_timeKeeping
                 if ($packet[$this->stadium['packetLength'] - 1] == $this->stadium['packetEnd']) {
 
                     $this->setData($packet, PACKET_STATUS_OK);
-                    $buf = substr($buf, $posStart + $this->stadium['packetLength']);
+
 
 
                 } else {
                     $this->setData($packet, PACKET_STATUS_ERROR);
-
                 }
 
+                $buf = substr($buf, $posStart + $this->stadium['packetLength']);
+                $buf_size = strlen($buf);
                 $readNext = true;
+
             } else {
 
                 if (($buf_size >= $this->stadium['packetLengthNoData']) && (($posStart = strpos($buf, $this->stadium['packetNoData'])) !== FALSE)) {
@@ -214,20 +217,16 @@ class  c_timeKeeping
                     $packet = substr($buf, $posStart, $this->stadium['packetLengthNoData']);
                     $this->setData($packet, PACKET_STATUS_NODATA);
 
-                    echo "Prazdna data: " . $buf_size . "\n";
-
                     $buf = substr($buf, $posStart + $this->stadium['packetLengthNoData']);
                     $buf_size = strlen($buf);
+
                     $readNext = false;
-
-
-
 
 
                 } else {
                     $this->setData($buf, PACKET_STATUS_ERROR);
+                    $buf = '';
                     $readNext = true;
-                    $buf = "";
                     echo "Error \n";
 
 
@@ -248,7 +247,7 @@ class  c_timeKeeping
 if ($argc > 1) {
 
     $st = $argv[1];
-    $st = 'litvinov';
+    //$st = 'litvinov';
 
     $c = new c_timeKeeping($st);
 
