@@ -2,7 +2,9 @@
 
 //
 
-require_once dirname(__FILE__) . '/moxaConf.inc.php/';
+$x= dirname(__FILE__) . '\moxaConf.inc.php';
+
+require_once dirname(__FILE__) . '\\moxaConf.inc.php';
 
 error_reporting(E_ALL);
 set_time_limit(0);
@@ -67,8 +69,6 @@ class c_timeTable
         $this->gameTime->setTime(0,$min,$sec);
 
 
-
-////       echo $this->packet;
 
     }
 
@@ -209,6 +209,7 @@ class  c_timeKeeping
     }
 
 }
+
 
 
 $c = new c_timeKeeping(ST);
