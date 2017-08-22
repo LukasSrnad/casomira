@@ -2,7 +2,6 @@
 
 
 
-
 require_once realpath(dirname(__FILE__) . '//moxaConf.inc.php');
 
 error_reporting(E_ALL);
@@ -104,7 +103,7 @@ function printData($format = 0)
     switch ($format) {
         case 0:
 
-            $data = $this->seq . "-" . $this->realtime . "-" . $this->gameTime->format('i-s-u') . "-" . $this->packet . "-" . $this->printPacketStatus();
+            $data = $this->seq . "-" . $this->realtime . "-" . $this->gameTime->format('i-s-u') . "-" . $this->packet . "- " . $this->printPacketStatus();
             break;
         case 1:
             $data = $this->packet;
@@ -255,8 +254,6 @@ class  c_timeKeeping
 
                 }
             }
-
-            if ($count == 1) sleep(3);
             $count++;
 
         }
