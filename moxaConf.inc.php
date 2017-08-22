@@ -8,7 +8,7 @@ define('MOXA_PORT_COMMAND', 966);
 define("PACKET_START",sprintf("%c%c%c",0x1,0x13, 0x54));
 define("PACKET_END",sprintf("%c",0x4));
 define("PACKET_LENGTH",37);
-define("PACKET_BUF_LENGTH",2);
+define("PACKET_BUF_LENGTH",4);
 
 
 
