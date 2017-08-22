@@ -103,7 +103,7 @@ function printData($format = 0)
     switch ($format) {
         case 0:
 
-            $data = $this->seq . "-" . $this->realtime . "-" . $this->gameTime->format('i-s-u') . "-" . $this->packet . "- " . $this->printPacketStatus();
+            $data = $this->seq . "-" . $this->realtime . "-" . $this->gameTime->format('i-s-u') . " :" . $this->packet . "- " . $this->printPacketStatus();
             break;
         case 1:
             $data = $this->packet;
